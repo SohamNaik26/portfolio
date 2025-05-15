@@ -1,71 +1,7 @@
 import ProjectCard from "@/components/ProjectCard";
+import { projects } from "@/data/projects"; // Import projects from the new data file
 
-// Actual project data based on Soham's GitHub repositories
-const projects = [
-  {
-    id: "portfolio",
-    title: "Personal Portfolio Website",
-    description:
-      "A responsive portfolio website built with Next.js and Tailwind CSS, featuring light and dark mode, responsive design, and modern UI components.",
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    imageUrl: "/portfolio.jpg",
-    demoUrl: "#",
-    githubUrl: "https://github.com/SohamNaik26/portfolio",
-  },
-  {
-    id: "weather-app",
-    title: "Weather App",
-    description:
-      "A weather application that provides current weather data and forecasts based on user location or search. Built with a client-server architecture.",
-    technologies: ["JavaScript", "HTML", "CSS", "Node.js"],
-    imageUrl:
-      "https://via.placeholder.com/800x600/16a34a/ffffff?text=Weather+App",
-    demoUrl: "https://weather-app-server-nine.vercel.app",
-    githubUrl: "https://github.com/SohamNaik26/weather-app",
-  },
-  {
-    id: "apple",
-    title: "Apple Website Clone",
-    description:
-      "A React and Vite based project recreating the Apple website interface with modern JavaScript and responsive design principles.",
-    technologies: ["React", "Vite", "JavaScript", "Tailwind CSS"],
-    imageUrl:
-      "https://via.placeholder.com/800x600/ef4444/ffffff?text=Apple+Clone",
-    githubUrl: "https://github.com/SohamNaik26/apple",
-  },
-  {
-    id: "paytm",
-    title: "Paytm Clone",
-    description:
-      "A Node.js based payment application clone of Paytm with user authentication, wallet functionality, and transaction processing.",
-    technologies: ["Node.js", "JavaScript", "Express", "MongoDB"],
-    imageUrl:
-      "https://via.placeholder.com/800x600/0ea5e9/ffffff?text=Paytm+Clone",
-    githubUrl: "https://github.com/SohamNaik26/Paytm",
-  },
-  {
-    id: "ecommerce",
-    title: "E-Commerce Platform",
-    description:
-      "A fully functional e-commerce platform with product listings, cart functionality, user authentication, and payment integration.",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe"],
-    imageUrl:
-      "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=E-Commerce+Platform",
-    demoUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    id: "dashboard",
-    title: "Admin Dashboard",
-    description:
-      "A comprehensive admin dashboard with data visualization, user management, and real-time analytics tracking.",
-    technologies: ["React", "Redux", "Chart.js", "Firebase", "Material UI"],
-    imageUrl:
-      "https://via.placeholder.com/800x600/ec4899/ffffff?text=Admin+Dashboard",
-    demoUrl: "#",
-    githubUrl: "#",
-  },
-];
+// const projects = [...]; // This is now imported
 
 export default function ProjectsPage() {
   return (
@@ -112,3 +48,4 @@ export default function ProjectsPage() {
     </div>
   );
 }
+ 

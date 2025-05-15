@@ -1,41 +1,8 @@
 import BlogPostCard from "@/components/BlogPostCard";
+import { blogPosts } from "@/data/blogPosts";
 
 // Sample blog post data - In a real app, you would fetch this from a database or CMS
-const blogPosts = [
-  {
-    id: "nextjs-introduction",
-    title: "Getting Started with Next.js: A Comprehensive Guide",
-    summary:
-      "Learn how to build modern web applications with Next.js, from setup to deployment, with tips and best practices.",
-    date: "2023-10-15",
-    readTime: "8 min",
-    imageUrl:
-      "https://via.placeholder.com/800x400/3b82f6/ffffff?text=Next.js+Guide",
-    author: "Soham Naik",
-  },
-  {
-    id: "tailwind-vs-css",
-    title: "Tailwind CSS vs. Traditional CSS: Pros and Cons",
-    summary:
-      "A detailed comparison of Tailwind CSS and traditional CSS approaches, helping you choose the right styling method for your projects.",
-    date: "2023-09-22",
-    readTime: "6 min",
-    imageUrl:
-      "https://via.placeholder.com/800x400/06b6d4/ffffff?text=Tailwind+vs+CSS",
-    author: "Soham Naik",
-  },
-  {
-    id: "react-performance",
-    title: "Optimizing React Performance: Advanced Techniques",
-    summary:
-      "Explore advanced performance optimization techniques for React applications, including memoization, code splitting, and more.",
-    date: "2023-08-10",
-    readTime: "10 min",
-    imageUrl:
-      "https://via.placeholder.com/800x400/ef4444/ffffff?text=React+Performance",
-    author: "Soham Naik",
-  },
-];
+// const blogPosts = [...]; // This is now imported
 
 export default function BlogPage() {
   return (
@@ -51,7 +18,7 @@ export default function BlogPage() {
       </div>
 
       {/* Blog posts grid */}
-      <div className="grid gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogPosts.map((post) => (
           <BlogPostCard
             key={post.id}
@@ -100,3 +67,4 @@ export default function BlogPage() {
     </div>
   );
 }
+ 

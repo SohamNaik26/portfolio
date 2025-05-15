@@ -1,8 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
+import ProjectCard from "@/components/ProjectCard";
+import BlogPostCard from "@/components/BlogPostCard";
+import { projects, Project } from "@/data/projects";
+import { blogPosts, BlogPost } from "@/data/blogPosts";
+import { Github } from "lucide-react";
 
 export default function Home() {
+  const featuredProjects = projects.slice(0, 3);
+  const recentPosts = blogPosts.slice(0, 3);
+
   return (
     <div className="animate-fadeIn">
       {/* Hero Section */}
@@ -44,8 +52,17 @@ export default function Home() {
               LinkedIn
             </a>
             <a
+              href="https://github.com/SohamNaik26"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-800 dark:bg-gray-600 dark:hover:bg-gray-700 transition-colors"
+            >
+              <Github size={20} />
+              GitHub
+            </a>
+            <a
               href="mailto:naiksoham267@gmail.com"
-              className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
             >
               <svg
                 className="w-5 h-5"
@@ -62,6 +79,26 @@ export default function Home() {
                 ></path>
               </svg>
               Email
+            </a>
+            <a
+              href="tel:+919876543210"
+              className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                ></path>
+              </svg>
+              Phone
             </a>
             <a
               href="https://instagram.com/sohamnaik_26"
@@ -159,42 +196,19 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-          <div className="relative h-96 w-full">
-            <img
-              src="/portfolio.jpg"
-              alt="Featured project"
-              className="w-full h-full object-contain"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {featuredProjects.map((project: Project) => (
+            <ProjectCard
+              key={project.id}
+              id={project.id}
+              title={project.title}
+              description={project.description}
+              technologies={project.technologies}
+              imageUrl={project.imageUrl || ""}
+              demoUrl={project.demoUrl}
+              githubUrl={project.githubUrl}
             />
-          </div>
-          <div className="p-6">
-            <h3 className="text-xl font-bold mb-2">
-              Personal Portfolio Website
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              A responsive portfolio website built with Next.js and Tailwind
-              CSS, featuring light and dark mode, responsive design, and modern
-              UI components.
-            </p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {["Next.js", "React", "TypeScript", "Tailwind CSS"].map(
-                (tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium"
-                  >
-                    {tech}
-                  </span>
-                )
-              )}
-            </div>
-            <Link
-              href="/projects/portfolio"
-              className="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-            >
-              View Details
-            </Link>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -210,10 +224,42 @@ export default function Home() {
           </Link>
         </div>
 
-        <p className="text-gray-600 dark:text-gray-400 italic text-center p-8">
-          Coming soon! Stay tuned for articles on web development, technology
-          trends, and more.
+        {recentPosts.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {recentPosts.map((post: BlogPost) => (
+              <BlogPostCard
+                key={post.id}
+                id={post.id}
+                title={post.title}
+                summary={post.summary}
+                date={post.date}
+                readTime={post.readTime}
+                imageUrl={post.imageUrl || ""}
+                author={post.author}
+              />
+            ))}
+          </div>
+        ) : (
+          <p className="text-gray-600 dark:text-gray-400 italic text-center p-8">
+            Coming soon! Stay tuned for articles on web development, technology
+            trends, and more.
+          </p>
+        )}
+      </section>
+
+      {/* Looking for a Developer Section */}
+      <section className="mt-16 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-8 text-center">
+        <h2 className="text-2xl font-bold mb-4">Looking for a Developer?</h2>
+        <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
+          I'm always open to discussing new projects, creative ideas, or
+          opportunities to be part of your vision.
         </p>
+        <Link
+          href="/contact"
+          className="inline-block px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+        >
+          Get In Touch
+        </Link>
       </section>
     </div>
   );
